@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Grayscale</title>
+  <style>
+  		*{
+		margin: 0; 
+		padding: 0;
+		}
+		canvas{
+		display: block;
+		}
+		body{
+		background: black;
+		}
+  </style>
+</head>
+
+<body>
+<html>
+<body>
+<canvas id="gray"></canvas>
+</body>
+</html>
+    <script>
+	window.onload = grayscale;
+	function grayscale(){
+		var c = document.getElementById("gray");
+		c.height = window.innerHeight;
+		c.width = window.innerWidth;  
+
+		var birsifir=12; 
+		var columnas=c.width/birsifir;
+		
+
+		var Texto="0";
+		Texto=Texto.split("");
+		var Texto2="1";
+		Texto2=Texto2.split("");
+
+		var degisken1=[];
+		for(var i=0; i<columnas;i++){
+			degisken1[i]=1;
+		}
+		context= c.getContext('2d');
+
+		function gr(){
+			context.fillStyle="rgba(0,0,0,0.05)";
+			context.fillRect(0,0,c.width,c.height);
+
+			context.fillStyle= "#0f0";
+			context.font= birsifir+"px arial";
+
+			for(var i=0;i<degisken1.length;i++){
+				text=Texto; 
+			
+				text2=Texto2;
+				if(i%2==1){context.fillText(text,i*birsifir, degisken1[i]*birsifir);
+				}else{
+					context.fillText(text2,i*birsifir, degisken1[i]*birsifir);
+				}
+
+				if(degisken1[i]*birsifir > c.height && Math.random()>0.975){
+					degisken1[i]=0;
+				}
+				degisken1[i]++;
+
+			}
+
+		}
+		setInterval(gr,120);
+	}
+	</script>
+
+</body>
+</html>
