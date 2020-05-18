@@ -1,4 +1,4 @@
-keyname="araz18"
+keyname="ad"
 keycode="1234"
 while(True):
     name=input("nick name please:")
